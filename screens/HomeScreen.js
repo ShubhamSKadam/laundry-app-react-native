@@ -11,6 +11,7 @@ import * as Location from "expo-location";
 import React, { useEffect, useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
+import Caraousel from "../components/Caraousel";
 
 const HomeScreen = () => {
   const [displayCurrentAddress, setDisplayCurrentAddress] = useState(
@@ -136,6 +137,9 @@ const HomeScreen = () => {
         <TextInput placeholder="Search for Items for More" />
         <Feather name="search" size={24} color="#fd5c63" />
       </View>
+
+      {/* Image Carousel */}
+      <Caraousel />
     </SafeAreaView>
   );
 };
