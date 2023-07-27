@@ -185,7 +185,7 @@ const HomeScreen = () => {
           margin: 10,
           alignItems: "center",
           justifyContent: "space-between",
-          borderWidth: 0.8,
+          borderWidth: '0.8',
           borderColor: "#c0c0c0",
           borderRadius: 7,
         }}
