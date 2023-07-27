@@ -15,8 +15,11 @@ import { Feather } from "@expo/vector-icons";
 import Caraousel from "../components/Caraousel";
 import Services from "../components/Services";
 import DressItem from "../components/DressItem";
+import { useSelector } from "react-redux";
 
 const HomeScreen = () => {
+  const cart = useSelector((state) => state.cart.cart);
+  console.log(cart);
   const [displayCurrentAddress, setDisplayCurrentAddress] = useState(
     "Loading Your Location"
   );
@@ -152,7 +155,7 @@ const HomeScreen = () => {
   ];
 
   return (
-    <ScrollView style={{ backgroundColor: "#F0F0F0", flex: 1, marginTop:50 }}>
+    <ScrollView style={{ backgroundColor: "#F0F0F0", flex: 1, marginTop: 50 }}>
       {/* Location and Profile */}
       <View
         style={{
@@ -185,7 +188,7 @@ const HomeScreen = () => {
           margin: 10,
           alignItems: "center",
           justifyContent: "space-between",
-          borderWidth: '0.8',
+          borderWidth: "0.8",
           borderColor: "#c0c0c0",
           borderRadius: 7,
         }}
@@ -201,8 +204,8 @@ const HomeScreen = () => {
       <Services />
 
       {/* Render all the products */}
-      {services.map((item,index)=>(
-        <DressItem item={item} key={index}/>
+      {services.map((item, index) => (
+        <DressItem item={item} key={index} />
       ))}
     </ScrollView>
   );

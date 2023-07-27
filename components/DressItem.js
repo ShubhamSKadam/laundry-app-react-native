@@ -40,7 +40,7 @@ const DressItem = ({ item }) => {
           <Text
             style={{
               borderColor: "gray",
-              borderWidth: "0.8",
+              borderWidth: 0.8,
               marginVertical: 10,
               color: "#088F8F",
               textAlign: "center",
