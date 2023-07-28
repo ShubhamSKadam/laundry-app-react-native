@@ -23,7 +23,7 @@ const HomeScreen = () => {
   const [displayCurrentAddress, setDisplayCurrentAddress] = useState(
     "Loading Your Location"
   );
-
+  
   const [locationServicesEnabled, setLocationServicesEnabled] = useState(false);
 
   useEffect(() => {
