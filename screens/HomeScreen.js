@@ -20,10 +20,11 @@ import { useSelector } from "react-redux";
 const HomeScreen = () => {
   const cart = useSelector((state) => state.cart.cart);
   console.log(cart);
+
   const [displayCurrentAddress, setDisplayCurrentAddress] = useState(
     "Loading Your Location"
   );
-  
+
   const [locationServicesEnabled, setLocationServicesEnabled] = useState(false);
 
   useEffect(() => {
@@ -100,6 +101,21 @@ const HomeScreen = () => {
       }
     }
   };
+
+  const product = useSelector((state) => state.product.product);
+  
+  useEffect(()=>{
+    if(product.length > 0){
+      return;
+    }
+
+    const fetchProducts = () =>{
+      services.map((service)=>{
+        
+      })
+    }
+
+  },[])
 
   // products data
   const services = [
