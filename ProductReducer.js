@@ -9,19 +9,19 @@ export const ProductSlice = createSlice({
     getProducts: (state, action) => {
       state.product.push({ ...action.payload });
     },
-    incrementQuantity: (state, action) => {
+    incrementQty: (state, action) => {
       const itemPresent = state.product.find(
         (item) => item.id === action.payload.id
       );
       itemPresent.quantity++;
     },
-    decrementQuantity: (state, action) => {
-      const itemPresent = state.cart.find(
+    decrementQty: (state, action) => {
+      const itemPresent = state.product.find(
         (item) => item.id === action.payload.id
       );
       if (itemPresent.quantity == 1) {
         itemPresent.quantity = 0;
-        const removeItem = state.cart.filter(
+        const removeItem = state.product.filter(
           (item) => item.id !== action.payload.id
         );
         state.cart = removeItem;
@@ -32,7 +32,6 @@ export const ProductSlice = createSlice({
   },
 });
 
-export const { getProducts, incrementQuantity, decrementQuantity } =
-  ProductSlice.actions;
+export const { getProducts, incrementQty, decrementQty } = ProductSlice.actions;
 
 export default ProductSlice.reducer;
