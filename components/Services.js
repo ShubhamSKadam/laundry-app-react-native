@@ -7,7 +7,6 @@ import {
   Image,
 } from "react-native";
 import React from "react";
-import { width } from "deprecated-react-native-prop-types/DeprecatedImagePropType";
 
 const Services = () => {
   // services data code

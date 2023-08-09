@@ -2,7 +2,6 @@ import {
   StyleSheet,
   Text,
   View,
-  SafeAreaView,
   Pressable,
   Image,
   TextInput,
@@ -15,7 +14,8 @@ import { Feather } from "@expo/vector-icons";
 import Caraousel from "../components/Caraousel";
 import Services from "../components/Services";
 import DressItem from "../components/DressItem";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts } from "../ProductReducer";
 
 const HomeScreen = () => {
   const cart = useSelector((state) => state.cart.cart);
@@ -103,19 +103,23 @@ const HomeScreen = () => {
   };
 
   const product = useSelector((state) => state.product.product);
-  
-  useEffect(()=>{
-    if(product.length > 0){
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (product.length > 0) {
       return;
     }
 
-    const fetchProducts = () =>{
-      services.map((service)=>{
-        
-      })
-    }
+    const fetchProducts = () => {
+      services.map((service) => {
+        dispatch(getProducts(service));
+      });
+    };
 
-  },[])
+    fetchProducts();
+  }, []);
+
+  console.log("Products", product);
 
   // products data
   const services = [
@@ -220,7 +224,7 @@ const HomeScreen = () => {
       <Services />
 
       {/* Render all the products */}
-      {services.map((item, index) => (
+      {product.map((item, index) => (
         <DressItem item={item} key={index} />
       ))}
     </ScrollView>
