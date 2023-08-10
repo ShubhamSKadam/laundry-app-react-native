@@ -1,14 +1,125 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import {
+  StyleSheet,
+  Text,
+  View,
+  SafeAreaView,
+  TextInput,
+  Pressable,
+  ScrollView,
+} from "react-native";
+import HorizontalDatepicker from "@awrminkhodaei/react-native-horizontal-datepicker";
+import { useState } from "react";
 
 const PickUpScreen = () => {
+  const [selectedDate, setSelectedDate] = useState("");
+
+  const deliveryTime = [
+    {
+      id: "0",
+      name: "2-3 Days",
+    },
+    {
+      id: "1",
+      name: "3-4 Days",
+    },
+    {
+      id: "2",
+      name: "4-5 Days",
+    },
+    {
+      id: "3",
+      name: "5-6 Days",
+    },
+    {
+      id: "4",
+      name: "Tommorrow",
+    },
+  ];
+
+  const times = [
+    {
+      id: "0",
+      time: "11:00 PM",
+    },
+    {
+      id: "1",
+      time: "12:00 PM",
+    },
+    {
+      id: "2",
+      time: "1:00 PM",
+    },
+    {
+      id: "2",
+      time: "2:00 PM",
+    },
+    {
+      id: "4",
+      time: "3:00 PM",
+    },
+    {
+      id: "5",
+      time: "4:00 PM",
+    },
+  ];
+
   return (
-    <View>
-      <Text>PickUpScreen</Text>
-    </View>
-  )
-}
+    <SafeAreaView>
+      <Text style={{ fontSize: 16, fontWeight: 500, marginHorizontal: 10 }}>
+        Enter Address
+      </Text>
+      <TextInput
+        style={{
+          padding: 50,
+          borderColor: "gray",
+          borderWidth: 0.7,
+          paddingVertical: 80,
+          borderRadius: 9,
+          margin: 10,
+        }}
+      />
+      <Text style={{ fontSize: 16, fontWeight: 500, marginHorizontal: 10 }}>
+        Pickup Date
+      </Text>
+      <HorizontalDatepicker
+        mode="gregorian"
+        startDate={new Date("2023-01-01")}
+        endDate={new Date("2023-12-31")}
+        initialSelectedDate={new Date("2020-08-22")}
+        onSelectedDateChange={(date) => setSelectedDate(date)}
+        selectedItemWidth={170}
+        unselectedItemWidth={38}
+        itemHeight={38}
+        itemRadius={10}
+        selectedItemTextStyle={styles.selectedItemTextStyle}
+        unselectedItemTextStyle={styles.selectedItemTextStyle}
+        selectedItemBackgroundColor="#222831"
+        unselectedItemBackgroundColor="#ececec"
+        flatListContainerStyle={styles.flatListContainerStyle}
+      />
+      <Text style={{ fontSize: 16, fontWeight: 500, marginHorizontal: 10 }}>
+        Select Time
+      </Text>
 
-export default PickUpScreen
+      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+        {times.map((item, index) => (
+          <Pressable
+            style={{
+              margin: 10,
+              borderRadius: 7,
+              padding: 15,
+              borderColor: "gray",
+              borderWidth: 0.7,
+            }}
+          >
+            <Text>{item.time}</Text>
+          </Pressable>
+        ))}
+      </ScrollView>
+    </SafeAreaView>
+  );
+};
 
-const styles = StyleSheet.create({})
+export default PickUpScreen;
+
+const styles = StyleSheet.create({});
