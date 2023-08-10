@@ -124,8 +124,6 @@ const HomeScreen = () => {
     fetchProducts();
   }, []);
 
-  console.log("Products", product);
-
   // products data
   const services = [
     {
