@@ -12,6 +12,8 @@ import { useState } from "react";
 
 const PickUpScreen = () => {
   const [selectedDate, setSelectedDate] = useState("");
+  const [selectedTime, setSelectedTime] = useState([]);
+  const [delivery, setDelivery] = useState([]);
 
   const deliveryTime = [
     {
@@ -104,15 +106,59 @@ const PickUpScreen = () => {
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {times.map((item, index) => (
           <Pressable
-            style={{
-              margin: 10,
-              borderRadius: 7,
-              padding: 15,
-              borderColor: "gray",
-              borderWidth: 0.7,
-            }}
+            key={index}
+            onPress={() => setSelectedTime(item.time)}
+            style={
+              selectedTime.includes(item.time)
+                ? {
+                    margin: 10,
+                    borderRadius: 7,
+                    padding: 15,
+                    borderColor: "red",
+                    borderWidth: 0.7,
+                  }
+                : {
+                    margin: 10,
+                    borderRadius: 7,
+                    padding: 15,
+                    borderColor: "gray",
+                    borderWidth: 0.7,
+                  }
+            }
           >
             <Text>{item.time}</Text>
+          </Pressable>
+        ))}
+      </ScrollView>
+
+      <Text style={{ fontSize: 16, fontWeight: 500, marginHorizontal: 10 }}>
+        Delivery Date
+      </Text>
+
+      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+        {deliveryTime.map((item, i) => (
+          <Pressable
+            onPress={() => setDelivery(item.name)}
+            key={i}
+            style={
+              delivery.includes(item.name)
+                ? {
+                    margin: 10,
+                    borderRadius: 7,
+                    padding: 15,
+                    borderColor: "red",
+                    borderWidth: 0.7,
+                  }
+                : {
+                    margin: 10,
+                    borderRadius: 7,
+                    padding: 15,
+                    borderColor: "gray",
+                    borderWidth: 0.7,
+                  }
+            }
+          >
+            <Text>{item.name}</Text>
           </Pressable>
         ))}
       </ScrollView>
